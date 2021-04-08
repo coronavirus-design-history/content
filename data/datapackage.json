@@ -1,0 +1,88 @@
+{
+  "title": "Content changes",
+  "description": "This is an list of content changes for selected NHS and government web pages related to coronavirus (COVID-19) products and services.",
+  "sources": [
+    {
+      "title": "GOV.UK",
+      "web": "https://gov.uk"
+    },
+    {
+      "title": "NHS.UK",
+      "web": "https://nhs.uk"
+    },
+    {
+      "title": "COVID-19 app support",
+      "web": "https://www.covid19.nhs.uk"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "OGL-UK-3.0",
+      "path": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "title": "Open Government Licence v 3.0"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "NHS Test and Trace",
+      "path": "https://www.covid19.nhs.uk",
+      "role": "maintainer"
+    }
+  ],
+  "resources": [
+    {
+      "name": "content-pages",
+      "title": "Versions of Covid-19 pages",
+      "mediatype": "text/csv",
+      "description": "Versions of selected Covid-19 pages in the UK",
+      "path": "https://raw.githubusercontent.com/test-and-trace-data/content-collector/main/data/content-pages.csv"
+    },
+    {
+      "name": "content-collected",
+      "title": "Versions of Covid-19 pages",
+      "mediatype": "text/csv",
+      "description": "Versions of selected Covid-19 pages in the UK",
+      "path": "content-collected.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "sha",
+            "type": "string"
+          },
+          {
+            "name": "entry-date",
+            "type": "datetime"
+          }
+        ],
+        "primaryKey": "sha",
+        "foreignKeys": [
+          {
+            "fields": ["id"],
+            "reference":  {
+              "resource": "content-pages",
+              "fields": ["id"]
+            }
+          }
+        ]
+      },
+      "profile": "tabular-data-resource",
+      "scheme": "file",
+      "format": "csv",
+      "hashing": "md5",
+      "encoding": "utf-8",
+      "stats": {
+        "hash": "0b1f8c5f302ca742ac335715b5ffab17",
+        "bytes": 583,
+        "fields": 3,
+        "rows": 6
+      }
+    }
+  ],
+  "update_frequency": "continuously",
+  "created": "2021-04-06T12:22:00.000000",
+  "updated": "2021-04-07T16:48:19.769743"
+}
