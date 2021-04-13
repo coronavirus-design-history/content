@@ -54,10 +54,10 @@
       "hashing": "md5",
       "encoding": "utf-8",
       "stats": {
-        "hash": "13ad400a9756c4dbe4436d511544c44d",
-        "bytes": 186,
+        "hash": "bccc6ab37f1d349ba8411f8256cddf65",
+        "bytes": 319,
         "fields": 4,
-        "rows": 1
+        "rows": 2
       }
     },
     {
@@ -115,5 +115,5 @@
   ],
   "update_frequency": "continuously",
   "created": "2021-04-06T12:22:00.000000",
-  "updated": "2021-04-13T12:50:14.263737"
+  "updated": "2021-04-13T16:28:28.109047"
 }
