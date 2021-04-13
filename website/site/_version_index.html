@@ -76,7 +76,7 @@
 	<ul class="nhsuk-body-s">
 		{% for resource in datapackage.resources %}
 		<li>
-			<a href="{{config.base_url}}{{resource.path}}" property="dcat:accessURL">{{resource.title}} as CSV</a>
+			<a href="{{config.base_url}}/{{resource.path}}" property="dcat:accessURL">{{resource.title}} as CSV</a>
 		</li>
 		{% endfor %}
 	</ul>
