@@ -2,6 +2,6 @@ service_title: "Test and Trace content changes"
 service_url: "/"
 description: "Changes to content on selected coronavirus pages"
 show_breadcrumbs: True
-base_url: "/content"
+base_url: ""
 github_url: "https://github.com/test-and-trace-data/content-versions"
 documentation_url: "/"

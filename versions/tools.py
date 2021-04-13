@@ -17,7 +17,7 @@ def _parent_exists(path, page, version):
     return os.path.exists(file_path)
 
 
-def generate_difference_files(data_directory="data"):
+def generate_difference_files(site_dir, data_directory="data"):
 
     env = Environment(loader=PackageLoader("website", "site"))
     for k, v in filters.items():
@@ -58,13 +58,14 @@ def generate_difference_files(data_directory="data"):
         }
 
         version_index_template = env.get_template("_version_index.html")
-        output_path = f"{page_dir}/{page['id']}/index.html"
-        version_index_template.stream(**context).dump(output_path)
+        output_path = os.path.join(site_dir, "pages", page["id"])
+        index_file_path = f"{output_path}/index.html"
+        version_index_template.stream(**context).dump(index_file_path)
 
         for version in filtered_versions:
             generate_diffs(
                 env,
-                page_dir,
+                output_path,
                 page["id"],
                 version["sha"],
                 version["parent-sha"],
@@ -74,10 +75,10 @@ def generate_difference_files(data_directory="data"):
 
 
 def generate_diffs(
-    env, page_dir, page_id, current, previous, date_change_recorded, config
+    env, output_path, page_id, current, previous, date_change_recorded, config
 ):
 
-    diff_dir = os.path.join(page_dir, page_id, "changes")
+    diff_dir = os.path.join(output_path, "changes")
 
     diff_html_path = os.path.join(diff_dir, f"{current}.html")
 
@@ -85,8 +86,8 @@ def generate_diffs(
         if not os.path.exists(diff_dir):
             os.makedirs(diff_dir)
 
-        previous_path = os.path.join(page_dir, page_id, f"{previous}.html")
-        current_path = os.path.join(page_dir, page_id, f"{current}.html")
+        previous_path = os.path.join(output_path, f"{previous}.html")
+        current_path = os.path.join(output_path, f"{current}.html")
 
         if not os.path.exists(current_path) or not os.path.exists(previous_path):
             return None

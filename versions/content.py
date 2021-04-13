@@ -11,8 +11,6 @@ import petl as etl
 from frictionless import Package, transform, steps
 from dotenv import load_dotenv
 
-from versions.tools import generate_difference_files
-
 load_dotenv()
 
 GITHUB_API = "https://api.github.com"
@@ -58,9 +56,10 @@ class Content:
                         content = resp.json()
                         decoded_bytes = base64.b64decode(content["content"])
                         decoded = str(decoded_bytes, "utf-8")
-                        outfile = os.path.join(
-                            "pages", page_id, f"{commit['sha']}.html"
-                        )
+                        page_dir = os.path.join(base_dir, "pages", page_id)
+                        if not os.path.exists(page_dir):
+                            os.makedirs(page_dir)
+                        outfile = os.path.join(page_dir, f"{commit['sha']}.html")
                         with open(outfile, "w") as f:
                             f.write(decoded)
                     else:
@@ -84,8 +83,6 @@ class Content:
                             ),
                             "data/content-collected.csv",
                         )
-                    generate_difference_files(data_dir)
-
                     transform(
                         package,
                         steps=[

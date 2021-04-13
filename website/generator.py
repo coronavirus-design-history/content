@@ -10,6 +10,7 @@ from shutil import copytree, rmtree, copy
 from frictionless import Package
 from pynpm import NPMPackage
 
+from versions.tools import generate_difference_files
 from website.filters import filters
 from website.readers import read_datapackage, read_markdown, read_csv
 from website.renderers import render_datapackage, render_markdown, render_csv
@@ -22,6 +23,7 @@ class StaticSite:
 
         try:
             data, site_dir, temp_dir = StaticSite.gather_resources(data_directory)
+            generate_difference_files(site_dir, data_directory)
             web = staticjinja.Site.make_site(
                 searchpath=temp_dir,
                 outpath=site_dir,
