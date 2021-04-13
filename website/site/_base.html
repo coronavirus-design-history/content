@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html prefix="dct: http://purl.org/dc/terms/
+              rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+              dcat: http://www.w3.org/ns/dcat#
+        foaf: http://xmlns.com/foaf/0.1/
+              odrs: http://schema.theodi.org/odrs#">
+  <head>
+    <title>{{config.title}}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{config['base_url']}}assets/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="nhsuk-header" role="banner">
+      <div class="nhsuk-width-container nhsuk-header__container">
+        <div class="nhsuk-header__logo nhsuk-header__logo--only">
+                    <a class="nhsuk-header__link nhsuk-header__link--service " href="{{config.service_url}}" aria-label="{{config.service_title}}"></a>
+        </div>
+      </div>
+    </header>
+    <div class="nhsuk-width-container">
+      <main class="nhsuk-main-wrapper" id="maincontent" role="main">
+        {% block content %}
+        {% endblock %}
+        <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+    </main>
+    </div>
+    <footer role="contentinfo">
+      <div class="nhsuk-footer" id="nhsuk-footer">
+        <div class="nhsuk-width-container">
+          <h2 class="nhsuk-u-visually-hidden">About</h2>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

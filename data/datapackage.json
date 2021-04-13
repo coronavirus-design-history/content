@@ -1,18 +1,10 @@
 {
   "title": "Content changes",
-  "description": "This is an list of content changes for selected NHS and government web pages related to coronavirus (COVID-19) products and services.",
+  "description": "This is an list of content changes for selected web pages related to coronavirus (COVID-19) products and services.",
   "sources": [
     {
-      "title": "GOV.UK",
-      "web": "https://gov.uk"
-    },
-    {
-      "title": "NHS.UK",
-      "web": "https://nhs.uk"
-    },
-    {
-      "title": "COVID-19 app support",
-      "web": "https://www.covid19.nhs.uk"
+      "title": "something.uk",
+      "web": "https://something.uk"
     }
   ],
   "licenses": [
@@ -24,8 +16,8 @@
   ],
   "contributors": [
     {
-      "title": "NHS Test and Trace",
-      "path": "https://www.covid19.nhs.uk",
+      "title": "Some organisation",
+      "path": "https://something.uk",
       "role": "maintainer"
     }
   ],
@@ -35,7 +27,38 @@
       "title": "Versions of Covid-19 pages",
       "mediatype": "text/csv",
       "description": "Versions of selected Covid-19 pages in the UK",
-      "path": "https://raw.githubusercontent.com/test-and-trace-data/content-collector/main/data/content-pages.csv"
+      "path": "https://raw.githubusercontent.com/test-and-trace-data/content-collector/main/data/content-pages.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "name": "created",
+            "type": "date"
+          }
+        ]
+      },
+      "profile": "tabular-data-resource",
+      "scheme": "https",
+      "format": "csv",
+      "hashing": "md5",
+      "encoding": "utf-8",
+      "stats": {
+        "hash": "13ad400a9756c4dbe4436d511544c44d",
+        "bytes": 186,
+        "fields": 4,
+        "rows": 1
+      }
     },
     {
       "name": "content-collected",
@@ -54,17 +77,25 @@
             "type": "string"
           },
           {
-            "name": "entry-date",
+            "name": "parent-sha",
+            "type": "string"
+          },
+          {
+            "name": "date-recorded",
             "type": "datetime"
           }
         ],
         "primaryKey": "sha",
         "foreignKeys": [
           {
-            "fields": ["id"],
-            "reference":  {
+            "fields": [
+              "id"
+            ],
+            "reference": {
               "resource": "content-pages",
-              "fields": ["id"]
+              "fields": [
+                "id"
+              ]
             }
           }
         ]
@@ -75,14 +106,14 @@
       "hashing": "md5",
       "encoding": "utf-8",
       "stats": {
-        "hash": "0b1f8c5f302ca742ac335715b5ffab17",
-        "bytes": 583,
-        "fields": 3,
-        "rows": 6
+        "hash": "44ec09256a92b89a1c9824c13be4b4df",
+        "bytes": 1893,
+        "fields": 4,
+        "rows": 12
       }
     }
   ],
   "update_frequency": "continuously",
   "created": "2021-04-06T12:22:00.000000",
-  "updated": "2021-04-07T16:48:19.769743"
+  "updated": "2021-04-13T12:09:35.710261"
 }

@@ -1,0 +1,11 @@
+{% set page_title = filename %}
+{% extends "_base.html" %}
+{% block content %}
+  <h1>{{filename}}</h1>
+
+  <pre>
+    <code>
+{{json}}
+    </code>
+  </pre>
+{% endblock %}

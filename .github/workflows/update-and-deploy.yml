@@ -1,0 +1,41 @@
+name: update-and-deploy
+on:
+  schedule:
+    - cron: "0 9 * * *"
+  workflow_dispatch:
+jobs:
+  checkreleases:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+            python-version: '3.x'
+      - name: Setup
+        run: make setup
+      - name: Check for updates to collector repo
+        run: make collate
+      - name: Push
+        run: |
+          if git diff-index --quiet HEAD --; then
+            echo "No updates found"
+          else
+            echo "Updates found"
+            git config user.name github-actions
+            git config user.email github-actions@github.com
+            git add .
+            git commit -m "updated at `date`"
+            git push
+          fi
+      - name: Generate site
+        run: make web
+        env:
+          BASE_URL: '/content'
+      - name: Deploy site
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: _site
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

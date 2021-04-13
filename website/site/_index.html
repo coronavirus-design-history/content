@@ -1,0 +1,111 @@
+{% set page_title = datapackage.title %}
+{% extends "_base.html" %}
+
+{% block content %}
+
+	<div class="nhsuk-u-reading-width">
+
+	<h1 class="nhsuk-heading-l">{{ datapackage.title }}</h1>
+	<p class="nhsuk-body-m">Track the changes to a selected list of pages related to coronavirus.</p>
+
+	<table role="table" class="nhsuk-table-responsive">
+		<caption class="nhsuk-table__caption">Content pages with versions collected</caption>
+		<thead role="rowgroup" class="nhsuk-table__head">
+		<tr role="row">
+			<th role="columnheader" class="" scope="col">
+				Description
+			</th>
+			<th role="columnheader" class="" scope="col">
+				View versions
+			</th>
+		</tr>
+		</thead>
+		<tbody class="nhsuk-table__body">
+		{% for page in pages %}
+			<tr role="row" class="nhsuk-table__row">
+				<td role="cell" class="nhsuk-table__cell">
+					<span class="nhsuk-table-responsive__heading">Description </span>{{page.description}}
+				</td>
+				<td role="cell" class="nhsuk-table__cell">
+					<span class="nhsuk-table-responsive__heading">View versions </span><a href="{{config.base_url}}pages/{{page.id}}">View</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<hr class="nhsuk-section-break nhsuk-section-break--l">
+	<h2 class="nhsuk-heading-m">About this dataset</h2>
+	{% if datapackage['updated'] or datapackage['created'] %}
+	<p class="nhsuk-body-s">
+		{% if datapackage['created'] %}
+		Created on {{datapackage['created']|format_datestring}}.
+		{% endif %}
+		{% if datapackage['updated'] %}
+		Last updated on {{datapackage['updated']|format_datestring}}.
+		{% endif %}
+		{% if datapackage['update_frequency'] %}
+		Updated {{datapackage['update_frequency']}}.
+		{% endif %}
+	</p>
+	{% endif %}
+	<p class="nhsuk-body-s">
+		Available in a <a href="datapackage.json">machine readable format</a> using the <a
+		href="https://specs.frictionlessdata.io/data-package/#language">data package specification</a>.
+		{% if datapackage.licenses %}
+		{% if datapackage.licenses|length > 1 %}
+		Available under the following licences:
+	<ul>
+		{% for source in datapackage.licenses %}
+		<li>
+			<a href="{{datapackage.licenses[0]['url']}}"><span
+				property="dct:license">{{datapackage.licenses[0]['title']}}</span></a>
+		</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	Available under the <a href="{{datapackage.licenses[0]['url']}}"><span property="dct:license">{{datapackage.licenses[0]['title']}}</span></a>.
+	{% endif %}
+	{% endif %}
+	<p class="nhsuk-body-s">Downloads</p>
+	<p><a href="{{config.base_url}}{{filename}}">{{resource.title}}</a></p>
+
+	{% if datapackage.sources %}
+	<p class="nhsuk-body-s">Compiled from the following sources:</p>
+	<ul class="nhsuk-body-s">
+		{% for source in datapackage.sources %}
+		<li>
+			{% if source.web %}
+			<a href="{{source.web}}">{{source.title}}</a>
+			{% else %}
+			{{source.title}}
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% if datapackage.contributors %}
+	<p class="nhsuk-body-s">
+		Managed by:
+	</p>
+	<ul class="nhsuk-body-s">
+		{% for contributor in datapackage.contributors %}
+		<li>
+			{% if contributor.path %}
+				<a href="{{contributor.path}}">{{contributor.title}}</a>
+			{% else %}
+			{{contributor.title}}
+			{% endif %}
+			{% if contributor.email %}
+				<a href="mailto:{{contributor.email}}">({{contributor.email}})</a>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+	<hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+	<h2 class="nhsuk-heading-m">Get in touch</h2>
+	<p class="nhsuk-body-s">If you’ve got a question about the service history or want to feedback, <a
+		href="#">get in touch</a>.</p>
+	<p class="nhsuk-body-s"><a href="#">Something here</a></p>
+</div>
+{% endif %}
+{% endblock %}
