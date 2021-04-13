@@ -32,7 +32,7 @@
 				<span class="nhsuk-table-responsive__heading">Date recorded </span>{{version["date-recorded"]}}
 			</td>
 			<td role="cell" class="nhsuk-table__cell">
-				<span class="nhsuk-table-responsive__heading">Changes</span>{% if version.sha in has_parent_version %}<a href="{{config.base_url}}pages/{{page_id}}/changes/{{version.sha}}.html">View</a>{% endif %}
+				<span class="nhsuk-table-responsive__heading">Changes</span>{% if version.sha in has_parent_version %}<a href="{{config.base_url}}/pages/{{page_id}}/changes/{{version.sha}}.html">View</a>{% endif %}
 			</td>
 		</tr>
 		{% endfor %}
@@ -55,7 +55,7 @@
 	</p>
 	{% endif %}
 	<p class="nhsuk-body-s">
-		Available in a <a href="datapackage.json">machine readable format</a> using the <a
+		Available in a <a href="{{config.base_url}}/data/datapackage.json">machine readable format</a> using the <a
 		href="https://specs.frictionlessdata.io/data-package/#language">data package specification</a>.
 		{% if datapackage.licenses %}
 		{% if datapackage.licenses|length > 1 %}

@@ -69,10 +69,13 @@ def generate_difference_files(data_directory="data"):
                 version["sha"],
                 version["parent-sha"],
                 version["date-recorded"],
+                config,
             )
 
 
-def generate_diffs(env, page_dir, page_id, current, previous, date_change_recorded):
+def generate_diffs(
+    env, page_dir, page_id, current, previous, date_change_recorded, config
+):
 
     diff_dir = os.path.join(page_dir, page_id, "changes")
 
@@ -143,6 +146,7 @@ def generate_diffs(env, page_dir, page_id, current, previous, date_change_record
                 "previous": previous,
                 "current": current,
                 "date_change_recorded": date_change_recorded,
+                "config": config,
             }
         )
         html = BeautifulSoup(content, "html.parser")
