@@ -1,0 +1,119 @@
+{
+  "title": "Content changes",
+  "description": "This is an list of content changes for selected web pages related to coronavirus (COVID-19) products and services.",
+  "sources": [
+    {
+      "title": "something.uk",
+      "web": "https://something.uk"
+    }
+  ],
+  "licenses": [
+    {
+      "name": "OGL-UK-3.0",
+      "path": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "title": "Open Government Licence v 3.0"
+    }
+  ],
+  "contributors": [
+    {
+      "title": "Some organisation",
+      "path": "https://something.uk",
+      "role": "maintainer"
+    }
+  ],
+  "resources": [
+    {
+      "name": "content-pages",
+      "title": "Versions of Covid-19 pages",
+      "mediatype": "text/csv",
+      "description": "Versions of selected Covid-19 pages in the UK",
+      "path": "https://raw.githubusercontent.com/test-and-trace-data/content-collector/main/data/content-pages.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "name": "created",
+            "type": "date"
+          }
+        ]
+      },
+      "profile": "tabular-data-resource",
+      "scheme": "https",
+      "format": "csv",
+      "hashing": "md5",
+      "encoding": "utf-8",
+      "stats": {
+        "hash": "13ad400a9756c4dbe4436d511544c44d",
+        "bytes": 186,
+        "fields": 4,
+        "rows": 1
+      }
+    },
+    {
+      "name": "content-collected",
+      "title": "Versions of Covid-19 pages",
+      "mediatype": "text/csv",
+      "description": "Versions of selected Covid-19 pages in the UK",
+      "path": "content-collected.csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "sha",
+            "type": "string"
+          },
+          {
+            "name": "parent-sha",
+            "type": "string"
+          },
+          {
+            "name": "date-recorded",
+            "type": "datetime"
+          }
+        ],
+        "primaryKey": "sha",
+        "foreignKeys": [
+          {
+            "fields": [
+              "id"
+            ],
+            "reference": {
+              "resource": "content-pages",
+              "fields": [
+                "id"
+              ]
+            }
+          }
+        ]
+      },
+      "profile": "tabular-data-resource",
+      "scheme": "file",
+      "format": "csv",
+      "hashing": "md5",
+      "encoding": "utf-8",
+      "stats": {
+        "hash": "44ec09256a92b89a1c9824c13be4b4df",
+        "bytes": 1893,
+        "fields": 4,
+        "rows": 12
+      }
+    }
+  ],
+  "update_frequency": "continuously",
+  "created": "2021-04-06T12:22:00.000000",
+  "updated": "2021-04-13T12:09:35.710261"
+}

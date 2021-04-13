@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html prefix="dct: http://purl.org/dc/terms/
+              rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+              dcat: http://www.w3.org/ns/dcat#
+        foaf: http://xmlns.com/foaf/0.1/
+              odrs: http://schema.theodi.org/odrs#">
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/contentassets/style.css" rel="stylesheet">
+  </head>
+  <body>
+    <header class="nhsuk-header" role="banner">
+      <div class="nhsuk-width-container nhsuk-header__container">
+        <div class="nhsuk-header__logo nhsuk-header__logo--only">
+                    <a class="nhsuk-header__link nhsuk-header__link--service " href="/" aria-label="Test and Trace content changes"></a>
+        </div>
+      </div>
+    </header>
+    <div class="nhsuk-width-container">
+      <main class="nhsuk-main-wrapper" id="maincontent" role="main">
+  <h1></h1>
+
+  <pre>
+    <code>
+{
+  "contributors": [
+    {
+      "path": "https://something.uk",
+      "role": "maintainer",
+      "title": "Some organisation"
+    }
+  ],
+  "created": "2021-04-06T12:22:00.000000",
+  "description": "This is an list of content changes for selected web pages related to coronavirus (COVID-19) products and services.",
+  "licenses": [
+    {
+      "name": "OGL-UK-3.0",
+      "path": "http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+      "title": "Open Government Licence v 3.0"
+    }
+  ],
+  "resources": [
+    {
+      "description": "Versions of selected Covid-19 pages in the UK",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hashing": "md5",
+      "mediatype": "text/csv",
+      "name": "content-pages",
+      "path": "https://raw.githubusercontent.com/test-and-trace-data/content-collector/main/data/content-pages.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "type": "string"
+          },
+          {
+            "name": "created",
+            "type": "date"
+          }
+        ]
+      },
+      "scheme": "https",
+      "stats": {
+        "bytes": 186,
+        "fields": 4,
+        "hash": "13ad400a9756c4dbe4436d511544c44d",
+        "rows": 1
+      },
+      "title": "Versions of Covid-19 pages"
+    },
+    {
+      "description": "Versions of selected Covid-19 pages in the UK",
+      "encoding": "utf-8",
+      "format": "csv",
+      "hashing": "md5",
+      "mediatype": "text/csv",
+      "name": "content-collected",
+      "path": "content-collected.csv",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "sha",
+            "type": "string"
+          },
+          {
+            "name": "parent-sha",
+            "type": "string"
+          },
+          {
+            "name": "date-recorded",
+            "type": "datetime"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "fields": [
+              "id"
+            ],
+            "reference": {
+              "fields": [
+                "id"
+              ],
+              "resource": "content-pages"
+            }
+          }
+        ],
+        "primaryKey": "sha"
+      },
+      "scheme": "file",
+      "stats": {
+        "bytes": 1893,
+        "fields": 4,
+        "hash": "44ec09256a92b89a1c9824c13be4b4df",
+        "rows": 12
+      },
+      "title": "Versions of Covid-19 pages"
+    }
+  ],
+  "sources": [
+    {
+      "title": "something.uk",
+      "web": "https://something.uk"
+    }
+  ],
+  "title": "Content changes",
+  "update_frequency": "continuously",
+  "updated": "2021-04-13T12:09:35.710261"
+}
+    </code>
+  </pre>
+        <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible">
+    </main>
+    </div>
+    <footer role="contentinfo">
+      <div class="nhsuk-footer" id="nhsuk-footer">
+        <div class="nhsuk-width-container">
+          <h2 class="nhsuk-u-visually-hidden">About</h2>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
