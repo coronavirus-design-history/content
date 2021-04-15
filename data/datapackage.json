@@ -106,14 +106,14 @@
       "hashing": "md5",
       "encoding": "utf-8",
       "stats": {
-        "hash": "1f1c8f71f7e6b18abd488b24b8507891",
-        "bytes": 1880,
+        "hash": "09d9b3dba475eca68f8e8b9167b4019c",
+        "bytes": 2027,
         "fields": 4,
-        "rows": 12
+        "rows": 13
       }
     }
   ],
   "update_frequency": "continuously",
   "created": "2021-04-06T12:22:00.000000",
-  "updated": "2021-04-14T09:11:48.766991"
+  "updated": "2021-04-15T09:11:53.286573"
 }
