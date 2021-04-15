@@ -1,3 +1,4 @@
+import csv
 import os
 import base64
 import pathlib
@@ -82,6 +83,7 @@ class Content:
                                 ]
                             ),
                             "data/content-collected.csv",
+                            quoting=csv.QUOTE_ALL,
                         )
                     transform(
                         package,
