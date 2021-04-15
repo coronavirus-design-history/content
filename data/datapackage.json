@@ -106,10 +106,10 @@
       "hashing": "md5",
       "encoding": "utf-8",
       "stats": {
-        "hash": "ce7ca6fcbf6e73b1cd384ec13f4912b4",
-        "bytes": 2300,
+        "hash": "5df1c1fb3323f11fd49593c7eb4b1b49",
+        "bytes": 2618,
         "fields": 4,
-        "rows": 14
+        "rows": 16
       }
     }
   ],
